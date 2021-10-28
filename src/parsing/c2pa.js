@@ -8,11 +8,6 @@ BoxParser.createFullBoxCtor("c2pa", function (stream) {
 
     var data_size = this.size - this.hdr_size - (this.box_purpose.length + 1);
 
-    // TODO: Figure out purpose of this 4 bytes
-    // It's not clear from the C2PA spec https://c2pa.org/public-draft/#_embedding_manifests_into_assets
-    this.unknown_data = stream.readUint8Array(4);
-    data_size -= 4;
-
     if (this.box_purpose === "manifest") {
         this.c2pa_merkle_offset = stream.readUint8Array(8);
         data_size -= 8;
