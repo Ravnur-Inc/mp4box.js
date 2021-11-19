@@ -1,9 +1,9 @@
-// aligned(8) class ContentProvenanceBox extends FullBox(`'c2pa'`, version = 0, 0) {
+// aligned(8) class ContentProvenanceBox extends FullBox(`'uuid'`, extended_type = 0xD8 0xFE 0xC3 0xD6 0x1B 0x0E 0x48 0x3C 0x92 0x97 0xE8 0x28 0x87 0x7E 0xC4 0x81, version = 0, 0) {
 //     string box_purpose;
 //     bit(8) data[];
 // }
 
-BoxParser.createFullBoxCtor("c2pa", function (stream) {
+BoxParser.createUUIDBox("d8fec3d61b0e483c92975828877ec481", true, false, function (stream) {
     this.box_purpose = stream.readCString();
 
     var data_size = this.size - this.hdr_size - (this.box_purpose.length + 1);
